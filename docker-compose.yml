@@ -1,0 +1,70 @@
+services:
+  backend:
+    container_name: gpr-api
+    build: 
+      context: ./apps/gpr
+    volumes:
+      - ./apps/gpr:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    networks:
+      - gpr-network
+
+  postgres:
+    container_name: postgres-gpr
+    image: postgres:17.0-alpine3.20
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: asd123
+      POSTGRES_DB: gpr_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./services/postgres/data:/var/lib/postgresql/data
+    networks:
+      - gpr-network    
+
+  redis:
+    container_name: redis-gpr
+    image: redis:6
+    networks:
+      - gpr-network
+
+  celery:
+    container_name: celery-gpr
+    build:
+      context: ./apps/gpr
+      dockerfile: Dockerfile
+    command: celery -A config.celery worker --loglevel=info
+    volumes:
+      - ./apps/gpr:/app
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis-gpr:6379/0
+    networks:
+      - gpr-network
+
+  flower:
+    container_name: flower-gpr
+    build:
+      context: ./apps/gpr
+      dockerfile: Dockerfile
+    command: celery -A config.celery flower
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis-gpr:6379/0
+    networks:
+      - gpr-network
+
+networks:
+  gpr-network:
+    driver: bridge
+
+

@@ -1,0 +1,67 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pdb
+*.log
+*.swp
+*.swo
+
+# Django
+*.sqlite3
+*.db
+*.pot
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+db.sqlite3
+media/
+static/
+.env
+
+# Virtual environments
+venv/
+.env/
+.venv/
+.venv/*
+
+# Docker
+*.log
+*.env
+docker-compose.override.yml
+**/*.db
+**/*.pyc
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+
+# Python Distribution
+build/
+dist/
+*.egg-info/
+
+# Pytest
+.coverage
+nosetests.xml
+coverage.xml
+*.hypothesis/
+
+# PyCharm
+.idea/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+data
