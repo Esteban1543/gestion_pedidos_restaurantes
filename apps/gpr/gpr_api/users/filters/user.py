@@ -10,6 +10,7 @@ class UserFilter(django_filters.FilterSet):
     class Meta:
         model = Users
         fields = [
+            "id",
             "first_name",
             "last_name",
             "email",
