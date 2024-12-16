@@ -4,10 +4,8 @@ from gpr_api.users.models.users import Users
 
 
 class UserFilter(django_filters.FilterSet):
-    restaurant_name = django_filters.CharFilter(
-        field_name="restaurants__name", lookup_expr="icontains"
-    )
-    typology_name = django_filters.CharFilter(field_name="typology__name", lookup_expr="icontains")
+    restaurants_id = django_filters.NumberFilter(field_name="restaurants__id")
+    typology_id = django_filters.NumberFilter(field_name="typology__id")
 
     class Meta:
         model = Users
