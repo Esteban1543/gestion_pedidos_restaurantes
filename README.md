@@ -46,7 +46,17 @@ Este README describe el proceso para configurar tu entorno de desarrollo y incia
 
 ## Inicializacion
 
+1. Por primera vez
+
 ```
     docker compose down --volumes  --remove-orphans
-    docker compose up --build;    
+    docker compose up --build;
+
+    docker compose -f docker-compose.yml run backend python manage.py migrate
+```
+
+2. Segunda vez
+   
+```
+    docker compose up
 ```
