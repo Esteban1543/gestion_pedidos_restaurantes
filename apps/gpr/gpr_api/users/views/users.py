@@ -11,6 +11,7 @@ from gpr_api.users.filters.user import UserFilter
 from gpr_api.users.selectors.get_user import get_users
 from gpr_api.users.serializers.login import LoginSerializer
 from gpr_api.users.serializers.users import UserAdditionalDataSerializer, UserSerializer
+from gpr_api.users.serializers.users_massive import UserMassiveUploadSerializer
 from gpr_api.users.utilities.get_authenticated_user import get_authenticated_user
 
 
@@ -49,3 +50,12 @@ class ChangePasswordAPIView(APIView):
         return Response(
             data={"message": "Password changed successfully"}, status=status.HTTP_200_OK
         )
+
+
+class MassiveUserUploadAPIView(APIView):
+    def post(self: Self, request: Request) -> Response:
+        get_authenticated_user(request=request)
+        massive_user_upload_serializer = UserMassiveUploadSerializer(data=request.data)
+        massive_user_upload_serializer.is_valid(raise_exception=True)
+
+        return Response(data={"detail": "Users were created correctly"}, status=status.HTTP_200_OK)
