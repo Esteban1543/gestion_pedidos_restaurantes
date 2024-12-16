@@ -37,4 +37,5 @@ urlpatterns = [
     path("", include("gpr_api.users.urls")),
     path("", include("gpr_api.menus.urls")),
     path("", include("gpr_api.restaurants.urls")),
+    path("", include("gpr_api.orders.urls")),
 ]
