@@ -25,3 +25,10 @@ class RestaurantsListAPIView(APIView):
         )
 
         return paginate_data(request=request, data=restaurants_serializer.data)
+
+    def post(self: Self, request: Request) -> Response:
+        get_authenticated_user(request=request)
+        restaurant_serializer: RestaurantsSerializer = RestaurantsSerializer(data=request.data)
+        restaurant_serializer.is_valid(raise_exception=True)
+
+        return Response(data=restaurant_serializer.data, status=201)
