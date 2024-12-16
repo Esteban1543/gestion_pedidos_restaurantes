@@ -4,4 +4,4 @@ from gpr_api.menus.models.menus import Menus
 
 
 def get_menus() -> QuerySet[Menus]:
-    return Menus.objects.all()
+    return Menus.objects.filter(active=True)

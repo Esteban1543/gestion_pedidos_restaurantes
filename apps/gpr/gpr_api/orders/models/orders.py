@@ -6,10 +6,18 @@ from gpr_api.restaurants.models.restaurants import Restaurants
 from gpr_api.users.models.users import Users
 
 
+class OrdersStatus(CommonInfo):
+    name = models.CharField(max_length=20)
+    description = models.TextField()
+
+    class Meta(CommonInfo.Meta):
+        db_table = "orders_status"
+
+
 class Orders(CommonInfo):
     customer = models.ForeignKey(Users, on_delete=models.CASCADE)
     restaurants = models.ForeignKey(Restaurants, on_delete=models.CASCADE)
-    status = models.CharField(max_length=20)
+    status = models.ForeignKey(OrdersStatus, on_delete=models.CASCADE)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
     delivery_address = models.TextField()
     special_instructions = models.TextField()
