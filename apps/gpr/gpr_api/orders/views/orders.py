@@ -5,7 +5,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from gpr_api.orders.serializers.creaate_orders import CreateOrderSerializer
+from gpr_api.orders.serializers.create_orders import CreateOrderSerializer
 
 
 class CreateOrderView(APIView):
