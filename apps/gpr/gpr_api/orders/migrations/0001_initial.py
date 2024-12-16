@@ -16,13 +16,29 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='OrdersStatus',
+            fields=[
+                ('id', models.AutoField(primary_key=True, serialize=False)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('active', models.BooleanField(default=True)),
+                ('name', models.CharField(max_length=20)),
+                ('description', models.TextField()),
+            ],
+            options={
+                'db_table': 'orders_status',
+                'abstract': False,
+            },
+        ),
+
+        migrations.CreateModel(
             name='Orders',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('active', models.BooleanField(default=True)),
-                ('status', models.CharField(max_length=20)),
+                ('status', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='orders.ordersstatus')),
                 ('total_amount', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('delivery_address', models.TextField()),
                 ('special_instructions', models.TextField()),
