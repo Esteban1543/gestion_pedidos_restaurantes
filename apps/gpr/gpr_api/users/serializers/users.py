@@ -2,7 +2,8 @@ from typing import Self
 
 from rest_framework import serializers
 
-from gpr_api.users.models.users import Users
+from gpr_api.users.models.users import Users, UsersAdditionalData
+from gpr_api.users.selectors.get_additional_data import get_additional_data_by_id
 from gpr_api.users.selectors.get_user import get_user_by_id
 
 
@@ -46,6 +47,24 @@ class UserSerializer(serializers.Serializer):
 
 
 class UserAdditionalDataSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
-    user_id = serializers.IntegerField()
-    password = serializers.CharField(max_length=255)
+    id = serializers.IntegerField(required=False)
+    user_id = serializers.IntegerField(required=True)
+    password = serializers.CharField(max_length=255, required=True)
+
+    def validate(self: Self, attrs: dict) -> dict:
+        user_id: int = attrs.get("user_id", 0)
+
+        user_additional_data: UsersAdditionalData | None = get_additional_data_by_id(
+            user_id=user_id
+        ).first()
+
+        if user_additional_data:
+            self._update_password(user_additional_data=user_additional_data, attrs=attrs)
+
+        return attrs
+
+    def _update_password(
+        self: Self, *, user_additional_data: UsersAdditionalData, attrs: dict
+    ) -> None:
+        user_additional_data.password = attrs.get("password", user_additional_data.password)
+        user_additional_data.save()

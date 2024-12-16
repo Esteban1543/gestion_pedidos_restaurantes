@@ -41,7 +41,11 @@ class UserAPIView(APIView):
 class ChangePasswordAPIView(APIView):
     def patch(self: Self, request: Request, user_id: int) -> Response:
         get_authenticated_user(request=request)
-        user_additional_data_serializer = UserAdditionalDataSerializer(data=request.data)
+        user_additional_data_serializer = UserAdditionalDataSerializer(
+            data={**request.data, "user_id": user_id}
+        )
         user_additional_data_serializer.is_valid(raise_exception=True)
 
-        return Response(data=user_additional_data_serializer, status=status.HTTP_200_OK)
+        return Response(
+            data={"message": "Password changed successfully"}, status=status.HTTP_200_OK
+        )
