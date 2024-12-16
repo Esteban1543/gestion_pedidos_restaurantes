@@ -16,7 +16,23 @@ Including another URLconf
 """
 
 from django.urls import include, path
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
+
+# Crear el esquema de la API
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Gpr API",
+        default_version="v1",
+        description="Sistema gestion de pedidos restaurantes",
+        contact=openapi.Contact(email="jhoanestebanpv1@gmail.com"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
-    path("users/", include("gpr_api.users.urls")),
+    path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
+    path("", include("gpr_api.users.urls")),
 ]

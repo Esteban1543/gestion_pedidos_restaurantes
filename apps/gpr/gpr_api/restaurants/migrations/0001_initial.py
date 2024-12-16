@@ -39,6 +39,7 @@ class Migration(migrations.Migration):
                 ('rating', models.FloatField()),
                 ('status', models.CharField(max_length=20)),
                 ('latitude', models.DecimalField(decimal_places=11, max_digits=21)),
+                ('longitude', models.DecimalField(decimal_places=11, max_digits=21)),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='restaurants.restaurantscategories')),
             ],
             options={

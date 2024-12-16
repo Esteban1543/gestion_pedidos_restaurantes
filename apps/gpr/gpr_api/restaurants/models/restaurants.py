@@ -18,7 +18,7 @@ class Restaurants(CommonInfo):
     status = models.CharField(max_length=20)
     category = models.ForeignKey(RestaurantsCategories, on_delete=models.CASCADE)
     latitude = models.DecimalField(max_digits=21, decimal_places=11)
-    latitude = models.DecimalField(max_digits=21, decimal_places=11)
+    longitude = models.DecimalField(max_digits=21, decimal_places=11)
 
     class Meta(CommonInfo.Meta):
         db_table = "restaurants"

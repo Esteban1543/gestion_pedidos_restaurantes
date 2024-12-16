@@ -39,12 +39,14 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "django_filters",
+    "drf_yasg",
     "gpr_api",
     "gpr_api.users",
     "gpr_api.menus",
     "gpr_api.orders",
     "gpr_api.restaurants",
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

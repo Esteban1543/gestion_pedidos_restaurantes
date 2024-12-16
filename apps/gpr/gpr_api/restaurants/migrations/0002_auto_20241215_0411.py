@@ -22,24 +22,24 @@ class Migration(migrations.Migration):
             (now(), now(), True, 'Comidas para mascotas', 'Comidas para mascotas')
         ON CONFLICT DO NOTHING;
 
-        INSERT INTO restaurants(created_at, updated_at, active, name, address, rating, status, latitude, category_id) VALUES
-            (now(), now(), True, 'McDonalds', 'Calle 1', 4.5, 'Activo', 1.0, 1),
-            (now(), now(), True, 'Burger King', 'Calle 2', 4.0, 'Activo', 2.0, 2),
-            (now(), now(), True, 'KFC', 'Calle 3', 4.0, 'Activo', 3.0, 3),
-            (now(), now(), True, 'Pizza Hut', 'Calle 4', 4.0, 'Activo', 4.0, 4),
-            (now(), now(), True, 'Dominos Pizza', 'Calle 5', 4.0, 'Activo', 5.0, 5),
-            (now(), now(), True, 'Subway', 'Calle 6', 4.0, 'Activo', 6.0, 6),
-            (now(), now(), True, 'Taco Bell', 'Calle 7', 4.0, 'Activo', 7.0, 7),
-            (now(), now(), True, 'Papa Johns', 'Calle 8', 4.0, 'Activo', 8.0, 8),
-            (now(), now(), True, 'Wendys', 'Calle 9', 4.0, 'Activo', 9.0, 9),
-            (now(), now(), True, 'Starbucks', 'Calle 10', 4.0, 'Activo', 10.0, 10),
-            (now(), now(), True, 'Dunkin Donuts', 'Calle 11', 4.0, 'Activo', 11.0, 11),
-            (now(), now(), True, 'Dairy Queen', 'Calle 12', 4.0, 'Activo', 12.0, 12),
-            (now(), now(), True, 'Popeyes', 'Calle 13', 4.0, 'Activo', 13.0, 11),
-            (now(), now(), True, 'Chick-fil-A', 'Calle 14', 4.0, 'Activo', 14.0, 10),
-            (now(), now(), True, 'Panera Bread', 'Calle 15', 4.0, 'Activo', 15.0, 1),
-            (now(), now(), True, 'Sonic Drive-In', 'Calle 16', 4.0, 'Activo', 16.0, 2),
-            (now(), now(), True, 'Little Caesars', 'Calle 17', 4.0, 'Activo', 17.0, 3)
+        INSERT INTO restaurants(created_at, updated_at, active, name, address, rating, status, latitude, longitude, category_id) VALUES
+            (now(), now(), True, 'McDonalds', 'Calle 1', 4.5, 'Activo', 1.0, 1.0, 1),
+            (now(), now(), True, 'Burger King', 'Calle 2', 4.0, 'Activo', 2.0, 2.0, 2),
+            (now(), now(), True, 'KFC', 'Calle 3', 4.0, 'Activo', 3.0, 3.0, 3),
+            (now(), now(), True, 'Pizza Hut', 'Calle 4', 4.0, 'Activo', 4.0, 4.0, 4),
+            (now(), now(), True, 'Dominos Pizza', 'Calle 5', 4.0, 'Activo', 5.0, 5.0, 5),
+            (now(), now(), True, 'Subway', 'Calle 6', 4.0, 'Activo', 6.0, 6.0, 6),
+            (now(), now(), True, 'Taco Bell', 'Calle 7', 4.0, 'Activo', 7.0, 7.0, 7),
+            (now(), now(), True, 'Papa Johns', 'Calle 8', 4.0, 'Activo', 8.0, 8.0, 8),
+            (now(), now(), True, 'Wendys', 'Calle 9', 4.0, 'Activo', 9.0, 9.0, 9),
+            (now(), now(), True, 'Starbucks', 'Calle 10', 4.0, 'Activo', 10.0, 10.0, 10),
+            (now(), now(), True, 'Dunkin Donuts', 'Calle 11', 4.0, 'Activo', 11.0, 11.0, 11),
+            (now(), now(), True, 'Dairy Queen', 'Calle 12', 4.0, 'Activo', 12.0, 12.0, 12),
+            (now(), now(), True, 'Popeyes', 'Calle 13', 4.0, 'Activo', 13.0, 13.0, 11),
+            (now(), now(), True, 'Chick-fil-A', 'Calle 14', 4.0, 'Activo', 14.0, 14.0, 10),
+            (now(), now(), True, 'Panera Bread', 'Calle 15', 4.0, 'Activo', 15.0, 15.0, 1),
+            (now(), now(), True, 'Sonic Drive-In', 'Calle 16', 4.0, 'Activo', 16.0, 16.0, 2),
+            (now(), now(), True, 'Little Caesars', 'Calle 17', 4.0, 'Activo', 17.0, 17.0, 3)
         ON CONFLICT DO NOTHING;
     """
 
