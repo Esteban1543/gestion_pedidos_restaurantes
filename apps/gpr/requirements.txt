@@ -7,3 +7,5 @@ drf-yasg
 PyJWT
 celery[redis]
 flower
+boto3
+django-storages

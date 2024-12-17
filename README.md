@@ -52,6 +52,11 @@ Este README describe el proceso para configurar tu entorno de desarrollo y incia
     docker compose down --volumes  --remove-orphans
     docker compose up --build;
 
+```
+
+Ingresar http://localhost:9001/, Ingresa con minioadmin:minioadmin y crea un Bucket llamado "gpr-bucket"
+
+```
     docker compose -f docker-compose.yml run backend python manage.py migrate
 ```
 
